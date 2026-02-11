@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3000');
+const socket = io(window.location.hostname === 'localhost' ? 'http://localhost:3000' : window.location.origin);
 
 function App() {
     const [status, setStatus] = useState('Disconnected');
@@ -58,8 +58,8 @@ function App() {
                                     <tr key={req.id} className="hover:bg-gray-50 transition-colors">
                                         <td className="px-6 py-4 font-medium">
                                             <span className={`px-2 py-1 rounded text-xs font-bold ${req.method === 'GET' ? 'bg-blue-100 text-blue-700' :
-                                                    req.method === 'POST' ? 'bg-green-100 text-green-700' :
-                                                        'bg-gray-100 text-gray-700'
+                                                req.method === 'POST' ? 'bg-green-100 text-green-700' :
+                                                    'bg-gray-100 text-gray-700'
                                                 }`}>
                                                 {req.method}
                                             </span>
@@ -68,8 +68,8 @@ function App() {
                                         <td className="px-6 py-4">
                                             {req.status ? (
                                                 <span className={`px-2 py-1 rounded text-xs font-bold ${req.status >= 200 && req.status < 300 ? 'bg-green-100 text-green-700' :
-                                                        req.status >= 400 ? 'bg-red-100 text-red-700' :
-                                                            'bg-yellow-100 text-yellow-700'
+                                                    req.status >= 400 ? 'bg-red-100 text-red-700' :
+                                                        'bg-yellow-100 text-yellow-700'
                                                     }`}>
                                                     {req.status}
                                                 </span>
