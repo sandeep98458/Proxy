@@ -1,1 +1,105 @@
 @import "tailwindcss";
+
+@theme {
+    --color-charles-bg: #1e1e1e;
+    --color-charles-sidebar: #252526;
+    --color-charles-toolbar: #2d2d2d;
+    --color-charles-border: #3c3c3c;
+    --color-charles-accent: #007acc;
+    --color-charles-text: #cccccc;
+    --color-charles-text-bright: #ffffff;
+    --color-charles-hover: #2a2d2e;
+    --color-charles-selected: #37373d;
+}
+
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: dark;
+    color: var(--color-charles-text);
+    background-color: var(--color-charles-bg);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-content: center;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#root {
+    width: 100%;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-charles-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-charles-border);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-charles-toolbar);
+}
+
+/* Tree utility */
+.tree-item {
+    display: flex;
+    align-items: center;
+    padding: 2px 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 13px;
+    user-select: none;
+}
+
+.tree-item:hover {
+    background-color: var(--color-charles-hover);
+}
+
+.tree-item.selected {
+    background-color: var(--color-charles-selected);
+    color: var(--color-charles-text-bright);
+}
+
+.tree-indent {
+    width: 16px;
+    flex-shrink: 0;
+}
+
+/* Toolbar button */
+.toolbar-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--color-charles-text);
+}
+
+.toolbar-btn:hover {
+    background-color: var(--color-charles-hover);
+    color: var(--color-charles-text-bright);
+}
+
+.toolbar-btn.active {
+    color: var(--color-charles-accent);
+}
